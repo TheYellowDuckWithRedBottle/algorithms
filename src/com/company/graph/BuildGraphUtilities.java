@@ -26,6 +26,7 @@ public class BuildGraphUtilities {
         }
         return g;
     }
+    
     public static int[][] buildGraph(boolean isWeighted,int vCount,int[][] raw){
         var g= new int[vCount][vCount];
         for(var edge:raw){
