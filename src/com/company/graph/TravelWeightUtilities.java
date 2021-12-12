@@ -49,8 +49,8 @@ public class TravelWeightUtilities {
         }
         return edges;
     }
-    //测试有权图的连通性
-    public static boolean isConected(List<List<Edge>> g,int entry,int target){
+    //测试有权图的连通性（广度优先遍历）
+    public static boolean isConected(List<List<Edge>> g, int entry, int target){
         var visited = new HashSet<Edge>();
         var q = new LinkedList<Integer>();
         q.offer(entry);
@@ -65,5 +65,15 @@ public class TravelWeightUtilities {
         }
         return false;
     }
+    //测试有权图连通性(深度优先遍历)
+    public static boolean isDeepConnected(List<List<Edge>> g,int entry,int target,Set<Edge> visited){
+        for(var edge:g.get(entry)){
+            if(edge.to == target||visited.add(edge)&&isDeepConnected(g,edge.to,target,visited)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }
